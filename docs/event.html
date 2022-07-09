@@ -34,7 +34,11 @@
         const contents = document.querySelector(".contents");
         contents.removeAttribute("hidden");
       };
+      const increment = () => {
+        document.getElementById("count").innerText++;
+      };
       document.body.onload = welcome;
+      document.getElementById("incrementButton"), (onclick = increment);
     </script>
   </body>
 </html>
