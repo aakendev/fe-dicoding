@@ -197,7 +197,7 @@
     "yargs-parser": "^21.0.1"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",
