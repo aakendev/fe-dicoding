@@ -36,6 +36,16 @@
       };
       const increment = () => {
         document.getElementById("count").innerText++;
+
+        if (document.getElementById("count").innerText == 7) {
+          const hiddenMessages = document.createElement("h4");
+          hiddenMessages.innerText =
+            "Selamat! Anda mendapatkan hadiah tersembunyi...";
+          const images = document.createElement("img");
+          images.setAttribute("src", "https://i.ibb.co/0V49VRZ/catto.jpg");
+          const contents = document.querySelector(".contents");
+          contents.appendChild(hiddenMessages).appendChild(images);
+        }
       };
       document.body.onload = welcome;
       document.getElementById("incrementButton"), (onclick = increment);
