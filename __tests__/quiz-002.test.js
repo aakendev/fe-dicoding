@@ -8,7 +8,7 @@ describe("Quiz 002 Test", () => {
   test('2. Jika Score lebih dari 80 dan kurang dari 89, scoreChecker harus mengembalikan "Anda mendapatkan nilai B."', () => {
     expect(scoreChecker(80)).toBe("Anda mendapatkan nilai B.");
   });
-  test('3. Jika Score lebih dari 70 dan kurang dari 79, scoreChecker harus mengembalikan "Anda mendapatkan nilai C"', () => {
+  test('3. Jika Score lebih dari 70 dan kurang dari 79, scoreChecker harus mengembalikan "Anda mendapatkan nilai C."', () => {
     expect(scoreChecker(70)).toBe("Anda mendapatkan nilai C.");
   });
   test('4. Jika Score lebih dari 60 dan kurang dari 69, scoreChecker harus mengembalikan "Anda mendapatkan nilai D."', () => {
