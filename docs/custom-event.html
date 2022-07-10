@@ -37,7 +37,9 @@
       window.addEventListener("load", () => {
         const tombol = document.getElementById("tombol");
         tombol.addEventListener("changeCaption", customEventHandler);
-        tombol.addEventListener("click", () => {});
+        tombol.addEventListener("click", () => {
+          tombol.dispatchEvent(changeCaption);
+        });
       });
     </script>
   </body>
