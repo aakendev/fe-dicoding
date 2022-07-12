@@ -1,5 +1,19 @@
 const todos = [];
+const SAVED_EVENT = "saved-todo";
 const RENDER_EVENT = "render-todo";
+const STORAGE_KEY = "todo-apps";
+
+const isStorageExist = () => {
+  if (typeof Storage === undefined) {
+    alert("Browser kamu tidak mendukung web storage");
+    return false;
+  }
+  return true;
+};
+
+document.addEventListener(SAVED_EVENT, () => {
+  alert("Data sudah disimpan di Local Storage");
+});
 
 document.addEventListener(RENDER_EVENT, () => {
   const uncompletedTODOList = document.getElementById("todos");
@@ -46,6 +60,7 @@ const addTodo = () => {
   todos.push(todoObject);
 
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -54,6 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ev.preventDefault();
     addTodo();
   });
+
+  if (isStorageExist()) {
+    loadDataFromStorage();
+  }
 });
 
 const findTodo = (todoId) => {
@@ -81,6 +100,7 @@ const addTaskToCompleted = (todoId) => {
 
   todoTarget.isCompleted = true;
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
 };
 
 const removeTaskFromCompleted = (todoId) => {
@@ -90,6 +110,7 @@ const removeTaskFromCompleted = (todoId) => {
 
   todos.splice(todoTarget, 1);
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
 };
 
 const undoTaskFromCompleted = (todoId) => {
@@ -99,6 +120,7 @@ const undoTaskFromCompleted = (todoId) => {
 
   todoTarget.isCompleted = false;
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData();
 };
 
 const makeTodo = (todoObject) => {
@@ -145,4 +167,25 @@ const makeTodo = (todoObject) => {
   }
 
   return container;
+};
+
+const saveData = () => {
+  if (isStorageExist()) {
+    const parsed = JSON.stringify(todos);
+    localStorage.setItem(STORAGE_KEY, parsed);
+    document.dispatchEvent(new Event(SAVED_EVENT));
+  }
+};
+
+const loadDataFromStorage = () => {
+  const serializedData = localStorage.getItem(STORAGE_KEY);
+  let data = JSON.parse(serializedData);
+
+  if (data !== null) {
+    for (const todo of data) {
+      todos.push(todo);
+    }
+  }
+
+  document.dispatchEvent(new Event(RENDER_EVENT));
 };
