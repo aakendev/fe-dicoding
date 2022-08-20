@@ -261,17 +261,29 @@ const makeBook = (bookObject) => {
     const deleteIcon = document.createElement("iconify-icon");
     deleteIcon.setAttribute("icon", "ant-design:delete-outlined");
     const deleteText = document.createElement("p");
-    deleteText.innerText = "Delete";
+    deleteText.innerText = "Send to Bin";
     deleteButton.append(deleteIcon, deleteText);
 
     deleteButton.addEventListener("click", () => {
       removeBooksFromRead(bookObject.id);
     });
 
+    const destroyButton = document.createElement("button");
+    destroyButton.classList.add("action");
+    const destroyIcon = document.createElement("iconify-icon");
+    destroyIcon.setAttribute("icon", "ant-design:delete-outlined");
+    const destroyText = document.createElement("p");
+    destroyText.innerText = "Destroy Book";
+    destroyButton.append(destroyIcon, destroyText);
+
+    destroyButton.addEventListener("click", () => {
+      destroyBooksFromDeleted(bookObject.id);
+    });
+
     const buttonDiv = document.createElement("div");
     buttonDiv.classList.add("form-input-flat");
     buttonDiv.classList.add("flex-center");
-    buttonDiv.append(undoButton, deleteButton);
+    buttonDiv.append(undoButton, deleteButton, destroyButton);
 
     bookContainer.append(buttonDiv);
   } else if (bookObject.isComplete === false) {
@@ -287,7 +299,36 @@ const makeBook = (bookObject) => {
       addBooksToRead(bookObject.id);
     });
 
-    bookContainer.append(checkButton);
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("action");
+    const deleteIcon = document.createElement("iconify-icon");
+    deleteIcon.setAttribute("icon", "ant-design:delete-outlined");
+    const deleteText = document.createElement("p");
+    deleteText.innerText = "Send to Bin";
+    deleteButton.append(deleteIcon, deleteText);
+
+    deleteButton.addEventListener("click", () => {
+      removeBooksFromRead(bookObject.id);
+    });
+
+    const destroyButton = document.createElement("button");
+    destroyButton.classList.add("action");
+    const destroyIcon = document.createElement("iconify-icon");
+    destroyIcon.setAttribute("icon", "ant-design:delete-outlined");
+    const destroyText = document.createElement("p");
+    destroyText.innerText = "Destroy Book";
+    destroyButton.append(destroyIcon, destroyText);
+
+    destroyButton.addEventListener("click", () => {
+      destroyBooksFromDeleted(bookObject.id);
+    });
+
+    const buttonDiv = document.createElement("div");
+    buttonDiv.classList.add("form-input-flat");
+    buttonDiv.classList.add("flex-center");
+    buttonDiv.append(checkButton, deleteButton, destroyButton);
+
+    bookContainer.append(buttonDiv);
   } else if (bookObject.isComplete === "deleted") {
     const returnButton = document.createElement("button");
     returnButton.classList.add("action");
