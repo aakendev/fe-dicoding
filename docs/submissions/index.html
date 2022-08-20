@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" color="#3377ff" />
+    <!-- Website Title -->
+    <title>Bookshelf Apps by AAKEN Developer</title>
+    <!-- Website Icon -->
+    <link rel="icon" href="images/favicon.svg" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.0-beta.3/dist/iconify-icon.min.js"></script>
+  </head>
+  <body>
+    <div id="dialog">
+      <div class="dialog-inner">
+        <div class="boxes">
+          <div class="boxes-shadow-dialog">
+            <h1 id="book-delete-title">AAKEN Developer</h1>
+            <p class="book-delete-msg text-warning">
+              <iconify-icon icon="mdi:alert" class="margin-r-50"></iconify-icon
+              >Attention... Your action can't be recovered.
+            </p>
+            <button id="btn-delete-yes" class="margin-r-50" type="button">
+              Yes
+            </button>
+            <button id="btn-delete-no" class="margin-l-50" type="button">
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="success">
+      <div class="dialog-inner">
+        <div class="boxes">
+          <div class="boxes-shadow-success flex-center form-input">
+            <iconify-icon
+              style="font-size: 64px; color: #0a0"
+              icon="ant-design:check-circle-outlined"
+            ></iconify-icon>
+            <p class="book-success-msg text-success">
+              Success Destroying the Books.
+            </p>
+            <button id="btn-confirm" type="button">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <div class="boxes">
+        <h1>Bookshelf Application by AAKEN Developer</h1>
+      </div>
+    </header>
+
+    <div id="book-input">
+      <div class="boxes">
+        <h1>Kindly Please Insert Book Data</h1>
+        <div class="boxes-shadow">
+          <form id="book-input-form" autocomplete="off">
+            <div class="form-input">
+              <label>Book Title</label>
+              <input id="book-input-title" type="text" required />
+            </div>
+            <div class="form-input">
+              <label>Book Writer</label>
+              <input id="book-input-writer" type="text" required />
+            </div>
+            <div class="form-input">
+              <label>Published Year</label>
+              <input id="book-input-year" type="number" required />
+            </div>
+            <div class="form-input-flat flex-center">
+              <p>Already read?</p>
+              <input id="read-checked" type="checkbox" />
+            </div>
+            <input type="submit" value="Insert Book Data" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="book-search">
+      <div class="boxes">
+        <h1>Search The Books</h1>
+        <div class="boxes-shadow">
+          <form id="book-search-form">
+            <div class="form-input-flat">
+              <select id="search-type">
+                <option>- Search By -</option>
+                <option value="title">By Title</option>
+                <option value="author">By Writer</option>
+                <option value="year">By Year</option>
+              </select>
+              <input class="margin-l-50" id="search-input" type="text" />
+            </div>
+            <input type="submit" value="Search Books" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="book-unread">
+      <div class="boxes">
+        <h1>Books Unread</h1>
+        <div id="book-unread-boxes"></div>
+      </div>
+    </div>
+
+    <div id="book-read">
+      <div class="boxes">
+        <h1>Books Read</h1>
+        <div id="book-read-boxes"></div>
+      </div>
+    </div>
+
+    <div id="book-deleted">
+      <div class="boxes">
+        <h1>Books Deleted</h1>
+        <div id="book-deleted-boxes"></div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="boxes">
+        <p>&copy;2022 by AAKEN Developer a.k.a Aldy Rizky Putra</p>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>
